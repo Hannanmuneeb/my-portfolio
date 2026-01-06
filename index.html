@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NovaTech Solutions | Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f8f9fa;
+  color: #333;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1e3799;
+}
+
+.navbar nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+}
+
+.navbar nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #1e3799;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== HAMBURGER ===== */
+.menu-toggle {
+  display: none;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  position: relative;
+}
+
+.menu-toggle span {
+  background: #333;
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  transition: 0.4s ease;
+}
+
+.menu-toggle span:nth-child(1) { top: 0; }
+.menu-toggle span:nth-child(2) { top: 9px; }
+.menu-toggle span:nth-child(3) { top: 18px; }
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  height: 90vh;
+  background: linear-gradient(120deg, #4a69bd, #1e3799);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+}
+
+.hero p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.btn {
+  margin-top: 25px;
+  padding: 12px 32px;
+  background: white;
+  color: #1e3799;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #1e3799;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 80px 60px;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+section p {
+  max-width: 650px;
+  margin: auto;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ===== GRID ===== */
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card, .project {
+  background: white;
+  padding: 40px;
+  width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.card:hover, .project:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* ===== CONTACT ===== */
+.contact form {
+  max-width: 450px;
+  margin: auto;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #1e3799;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  section {
+    padding: 70px 30px;
+  }
+
+  .grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  .navbar nav {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: white;
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: 0.4s ease;
+  }
+
+  .navbar nav.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .navbar nav a {
+    margin: 10px 0;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">NovaTech</div>
+
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav id="nav-menu">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>We Build Modern Business Websites</h1>
+  <p>Clean • Responsive • Professional</p>
+  <a href="#contact" class="btn">Start a Project</a>
+</section>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card">Website Design</div>
+    <div class="card">Landing Pages</div>
+    <div class="card">Business Websites</div>
+  </div>
+</section>
+
+<section id="work">
+  <h2>Recent Projects</h2>
+  <div class="grid">
+    <div class="project">Corporate Website</div>
+    <div class="project">Agency Landing Page</div>
+    <div class="project">Portfolio Website</div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Let’s Work Together</h2>
+  <form>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea placeholder="Project Details"></textarea>
+    <button class="btn">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  Demo Website for Fiverr Portfolio
+</footer>
+
+<script>
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav-menu");
+const links = nav.querySelectorAll("a");
+
+toggle.addEventListener("click", () => {
+  toggle.classList.toggle("active");
+  nav.classList.toggle("active");
+});
+
+links.forEach(link => {
+  link.addEventListener("click", () => {
+    toggle.classList.remove("active");
+    nav.classList.remove("active");
+  });
+});
+</script>
+
+</body>
+</html>
